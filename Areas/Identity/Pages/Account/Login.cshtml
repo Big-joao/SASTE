@@ -1,0 +1,70 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Entrar";
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SASTE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body { background-color: #f4f6f9; }
+        .card-login { border-radius: 10px; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-dark-custom { background-color: #212529; color: white; border: none; }
+        .btn-dark-custom:hover { background-color: #495057; color: white; }
+        .link-custom { color: #6c757d; text-decoration: none; font-weight: bold; }
+        .link-custom:hover { color: #212529; }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="card card-login p-4 bg-white">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <img src="~/img/SASTE-logo.png" alt="Logótipo SASTE" style="max-height: 70px; object-fit: contain;" />
+                        </div>
+                        <h5 class="text-center mb-4 text-muted">Acesso ao Sistema</h5>
+                        
+                        <form id="account" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                            
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nome@exemplo.com" />
+                                <label asp-for="Input.Email" class="form-label text-muted">Email</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                                <label asp-for="Input.Password" class="form-label text-muted">Password</label>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                <label asp-for="Input.RememberMe" class="form-check-label text-muted">
+                                    Lembrar-me
+                                </label>
+                            </div>
+                            
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-dark-custom mb-3">Entrar</button>
+                            
+                            <div class="text-center">
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="link-custom">Criar nova conta</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
