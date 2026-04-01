@@ -1,0 +1,48 @@
+﻿@page
+@model SASTE.Pages.Sales.IndexModel
+@{
+    ViewData["Title"] = "Seviço de armazem";
+}
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <h4 class="text-primary mb-4 fw-bold">Histórico Global</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nº Venda</th>
+                        <th>Data e Hora</th>
+                        <th>Produtos Vendidos</th>
+                        <th>Vendedor</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Sales.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">Ainda não existem vendas registadas.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var s in Model.Sales)
+                        {
+                            <tr>
+                                <td><span class="badge bg-secondary">@s.SaleNumber</span></td>
+                                <td>@s.Date.ToString("HH:mm - dd/MM/yyyy")</td>
+                                <td class="text-muted">@s.ProductsSummary</td>
+                                <td>@s.SellerName</td>
+                                <td>@s.CustomerName</td>
+                                <td class="fw-bold text-success">€ @s.Total.ToString("0.00")</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

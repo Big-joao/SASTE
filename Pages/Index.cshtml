@@ -1,0 +1,165 @@
+﻿@page
+@model SASTE.Pages.IndexModel
+@{
+    ViewData["Title"] = "SASTE - Sistema de Administração e Supervisão de Tarefas Empresariais";
+}
+
+<div class="landing-page">
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">Projeto PAP</span>
+
+                <h1>SASTE - Sistema de Administração e Supervisão de Tarefas Empresariais</h1>
+
+                <p class="hero-description">
+                    Uma plataforma web moderna para apoiar a gestão empresarial,
+                    permitindo controlar stock, registar vendas, gerir utilizadores,
+                    organizar permissões por cargo e consultar histórico de operações.
+                </p>
+
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div class="hero-buttons">
+                        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary btn-lg">
+                            Entrar
+                        </a>
+                        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-outline-light btn-lg">
+                            Registar
+                        </a>
+                    </div>
+                }
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <h3>Resumo do Sistema</h3>
+                </div>
+                <div class="hero-card-body">
+                    <div class="feature-mini">
+                        <span class="feature-title">Gestão de Stock</span>
+                        <p>Controlo de produtos, quantidades e estado do armazém.</p>
+                    </div>
+                    <div class="feature-mini">
+                        <span class="feature-title">Gestão de Vendas</span>
+                        <p>Registo de vendas e consulta de histórico comercial.</p>
+                    </div>
+                    <div class="feature-mini">
+                        <span class="feature-title">Gestão de Utilizadores</span>
+                        <p>Administração de contas, cargos e permissões.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="section-header text-center">
+            <h2>Sobre o SASTE</h2>
+            <p>
+                O SASTE foi concebido para responder às necessidades essenciais de organização
+                e controlo numa empresa, concentrando as áreas mais importantes num único sistema.
+            </p>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card h-100">
+                    <div class="info-icon">📦</div>
+                    <h4>Stock</h4>
+                    <p>
+                        Acompanhe os produtos em armazém, consulte quantidades disponíveis
+                        e identifique situações de stock baixo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card h-100">
+                    <div class="info-icon">💳</div>
+                    <h4>Vendas</h4>
+                    <p>
+                        Registe vendas de forma organizada, associando produtos,
+                        vendedores, clientes e totais de cada operação.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card h-100">
+                    <div class="info-icon">👥</div>
+                    <h4>Utilizadores</h4>
+                    <p>
+                        Faça a gestão de utilizadores e atribua cargos com permissões
+                        adaptadas às funções de cada colaborador.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="info-card h-100">
+                    <div class="info-icon">📊</div>
+                    <h4>Histórico</h4>
+                    <p>
+                        Consulte dados de vendas e acompanhe o desempenho geral
+                        do sistema com informação centralizada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="objectives-section">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <div class="content-box">
+                    <h2>Finalidade do Projeto</h2>
+                    <p>
+                        O principal objetivo do SASTE é disponibilizar uma solução simples,
+                        clara e funcional para apoiar a gestão operacional de uma empresa.
+                    </p>
+                    <p>
+                        A aplicação foi desenvolvida para centralizar tarefas essenciais,
+                        reduzir a desorganização e melhorar o acesso à informação por parte
+                        dos diferentes perfis de utilizador.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="content-box secondary">
+                    <h2>Áreas Funcionais</h2>
+                    <ul class="custom-list">
+                        <li>Administração de utilizadores e cargos</li>
+                        <li>Controlo e gestão de stock</li>
+                        <li>Registo e histórico de vendas</li>
+                        <li>Consulta de indicadores em dashboard</li>
+                        <li>Organização por perfis funcionais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <section class="cta-section text-center">
+            <div class="cta-box">
+                <h2>Pronto para entrar no sistema?</h2>
+                <p>
+                    Aceda à plataforma para consultar a dashboard, gerir o armazém,
+                    acompanhar vendas e administrar utilizadores.
+                </p>
+
+                <div class="hero-buttons justify-content-center">
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary btn-lg">
+                        Entrar no SASTE
+                    </a>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-outline-primary btn-lg">
+                        Criar Conta
+                    </a>
+                </div>
+            </div>
+        </section>
+    }
+</div>

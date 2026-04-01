@@ -1,0 +1,32 @@
+﻿@page
+@model SASTE.Pages.Admin.CustomersModel
+@{
+    ViewData["Title"] = "Gestão de Clientes";
+}
+
+<h2>Clientes</h2>
+<p>Página em construção...</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Histórico</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Customers)
+        {
+            <tr>
+                <td>@c.Email</td>
+                <td>
+                    <a class="btn btn-outline-primary"
+                       asp-page="/Admin/CustomerPurchases"
+                       asp-route-userId="@c.Id">
+                        Ver compras
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

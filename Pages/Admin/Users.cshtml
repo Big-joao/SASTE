@@ -1,0 +1,47 @@
+﻿@page
+@model SASTE.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "Editar cargos";
+}
+
+<h2>Editar cargos</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Alterar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model.Users)
+        {
+            <tr>
+                <td>@u.Email</td>
+                <td>@u.CurrentRole</td>
+                <td>
+                    <form method="post" asp-page-handler="SetRole" class="d-flex gap-2">
+                        <input type="hidden" name="userId" value="@u.Id" />
+                        <select name="selectedRole" class="form-select" style="max-width: 200px;">
+                            <option value="Cliente" selected="@(u.CurrentRole == "Cliente")">Cliente</option>
+                            @foreach (var r in Model.Roles)
+                            {
+                                <option value="@r" selected="@(u.CurrentRole == r)">@r</option>
+                            }
+                        </select>
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="DeleteUser"
+                          onsubmit="return confirm('Tens a certeza que queres eliminar este utilizador? Esta ação não pode ser desfeita.');">
+                        <input type="hidden" name="userId" value="@u.Id" />
+                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
